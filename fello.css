@@ -1,0 +1,371 @@
+/* Đảm bảo Lenis hoạt động đúng với layout của Webcake */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
+}
+
+.Custum_menu .tag-link {
+    transition: transform 0.3s cubic-bezier(.4, 0, .2, 1);
+}
+
+.Custum_menu .menu-item:hover .tag-link {
+    transform: translateX(4px);
+}
+
+/* ==========================================================================
+   MÃ CSS AN TOÀN TUYỆT ĐỐI: CARD BLOG + THANH PHÂN TRANG
+   ========================================================================== */
+
+/* --- 1. HIỆU ỨNG TRONG CARD BÀI VIẾT --- */
+
+/* Thêm margin bottom cho mỗi thẻ card */
+.fello_blog_card post-list-item {
+    margin-bottom: 20px !important;
+}
+
+.fello_blog_card .post-list__container {
+    overflow: hidden !important;
+    border-radius: 16px !important;
+}
+
+.fello_blog_card .post-list__image {
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.fello_blog_card post-list-item:hover .post-list__image {
+    transform: scale(1.05) !important;
+}
+
+/* Biến danh mục thành dạng Tag nét mảnh */
+.fello_blog_card .post-list__category {
+    display: inline-block !important;
+    width: max-content !important;
+    border: 1px solid #E0E0E0 !important;
+    border-radius: 20px !important;
+    padding: 4px 12px !important;
+    margin-bottom: 12px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #555555 !important;
+    background-color: transparent !important;
+    transition: all 0.25s ease !important;
+}
+
+.fello_blog_card .post-list__category:hover {
+    border-color: #000000 !important;
+    color: #000000 !important;
+    background-color: #F9F9F9 !important;
+}
+
+/* Tiêu đề đổi màu khi di chuột vào card */
+.fello_blog_card .post-list__title {
+    transition: color 0.25s ease !important;
+}
+
+.fello_blog_card post-list-item:hover .post-list__title {
+    color: #000000 !important;
+}
+
+/* Nút "Đọc bài viết" dịch chuyển nhẹ và đổi sang màu xanh rêu #7f9463 */
+.fello_blog_card .post-list__read-button {
+    display: inline-flex !important;
+    align-items: center !important;
+    position: relative !important;
+    color: #333333 !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.fello_blog_card post-list-item:hover .post-list__read-button {
+    transform: translateX(6px) !important;
+    color: #7f9463 !important;
+    font-weight: 600 !important;
+}
+
+
+/* --- 2. STYLING THANH PHÂN TRANG --- */
+
+/* ---- 2a. Các nút Previous / Next ---- */
+.fello_blog_card .post-list__btn {
+    border-radius: 8px !important;
+    background-color: #FFF2F2 !important;
+    border: 1px solid #E8D4D4 !important;
+    padding: 8px 10px !important;
+    min-width: 36px !important;
+    height: 36px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Hover state cho nút Previous / Next */
+.fello_blog_card .post-list__btn:not(.disable):hover {
+    background-color: #4f4f4f !important;
+    border-color: #4f4f4f !important;
+}
+
+.fello_blog_card .post-list__btn:not(.disable):hover svg {
+    stroke: #FFFFFF !important;
+    fill: #FFFFFF !important;
+}
+
+/* Trạng thái disabled (nút Previous khi ở trang đầu) */
+.fello_blog_card .post-list__btn.disable {
+    opacity: 0.4 !important;
+    cursor: not-allowed !important;
+}
+
+.fello_blog_card .post-list__btn svg {
+    transition: all 0.3s ease !important;
+    stroke: #4f4f4f !important;
+    fill: none !important;
+}
+
+
+/* ---- 2b. Các con số phân trang ---- */
+.fello_blog_card .post-list__num {
+    border-radius: 8px !important;
+    background-color: #FFF2F2 !important;
+    border: 1px solid #E8D4D4 !important;
+    padding: 8px 12px !important;
+    min-width: 36px !important;
+    height: 36px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 4px !important;
+    cursor: pointer !important;
+    font-weight: 500 !important;
+    color: #4f4f4f !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Hover state cho con số */
+.fello_blog_card .post-list__num:hover:not(.active) {
+    background-color: #F0E0E0 !important;
+    border-color: #D4B4B4 !important;
+}
+
+/* Trạng thái active (con số được chọn) */
+.fello_blog_card .post-list__num.active {
+    background-color: #4f4f4f !important;
+    border-color: #4f4f4f !important;
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+/* ==========================================================================
+   CUSTOM KHỐI KHÁM PHÁ DANH MỤC (.discover_catalog)
+   ========================================================================== */
+
+/* --- 1. THIẾT LẬP KHUNG CHỨA MỖI DÒNG --- */
+.discover_catalog .tag-link {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important; /* Đẩy chữ sang trái, mũi tên sang phải */
+    width: 100% !important;
+    padding-right: 56px !important; /* Tạo khoảng trống bên phải để không bị chữ đè lên nút */
+    box-sizing: border-box !important;
+}
+
+/* --- 2. TỰ ĐỘNG TẠO BUTTON TRÒN VÀ MŨI TÊN Ở CUỐI HÀNG --- */
+.discover_catalog .tag-link::after {
+    content: "" !important;
+    position: absolute !important;
+    right: 0 !important; /* Đặt nút sát lề phải chuẩn theo mẫu */
+    top: 50% !important;
+    transform: translateY(-50%) !important; /* Căn giữa nút theo chiều dọc */
+    
+    /* Thiết kế Button hình tròn theo kích thước mẫu */
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 50% !important;
+    
+    /* Trạng thái gốc: Nền trong suốt, viền xám nhạt */
+    background-color: transparent !important;
+    border: 1px solid #E5E5E5 !important; 
+    
+    /* Chèn icon mũi tên dạng SVG mỏng chuẩn nét cao cấp */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%23333333'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5' /%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 16px !important; /* Cỡ mũi tên vừa vặn trong lòng nút */
+    
+    /* Hiệu ứng chuyển động mượt mà khi hover */
+    transition: background-color 0.25s ease, 
+                border-color 0.25s ease, 
+                background-image 0.25s ease, 
+                transform 0.25s ease !important;
+}
+
+/* --- 3. HIỆU ỨNG TƯƠNG TÁC (HOVER) CHO TỪNG DÒNG --- */
+/* Khi rê chuột vào bất kỳ vùng nào trên dòng danh mục */
+.discover_catalog .menu-item:hover .tag-link::after {
+    background-color: #1A1A1A !important; /* Button chuyển sang màu đen ráp/đen tuyền */
+    border-color: #1A1A1A !important;
+    
+    /* Đổi màu mũi tên bên trong thành màu trắng tinh (%23FFFFFF) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%23FFFFFF'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5' /%3E%3C/svg%3E") !important;
+    
+    /* Giữ nguyên căn giữa chiều dọc và nhích nhẹ nút sang phải 2px tạo độ nảy sinh động */
+    transform: translateY(-50%) translateX(2px) !important;
+}
+
+/* ==========================================================================
+   CUSTOM HIỆU ỨNG LOGO ĐỐI TÁC (.partner_logo)
+   ========================================================================== */
+
+/* --- 1. TRẠNG THÁI GỐC: BIẾN TẤT CẢ LOGO THÀNH TRẮNG ĐEN --- */
+.partner_logo .x-image img {
+    /* Đưa độ bão hòa màu (saturation) về 0 = Trắng đen hoàn toàn */
+    filter: grayscale(100%) !important;
+
+    /* Làm mờ nhẹ đi một chút (opacity 60%) để các logo nhìn đều nhau, 
+       không bị con đậm con nhạt gây nát giao diện */
+    opacity: 0.6 !important;
+
+    /* Tạo hiệu ứng chuyển đổi mượt mà trong 0.3 giây khi hover */
+    transition: filter 0.3s ease, opacity 0.3s ease !important;
+}
+
+/* --- 2. TRẠNG THÁI HOVER: TRẢ LẠI MÀU GỐC SẮC NÉT --- */
+.partner_logo .x-image:hover img {
+    /* Trả lại màu sắc nguyên bản của logo */
+    filter: grayscale(0%) !important;
+
+    /* Hiển thị rõ nét 100% */
+    opacity: 1 !important;
+}
+
+/* ==========================================================================
+   TÙY CHỈNH DANH MỤC SẢN PHẨM (.fello_product_card)
+   ========================================================================== */
+
+/* Biến thẻ cha thành khung chứa, sắp xếp các thẻ con cách nhau 8px */
+.fello_product_card .grid-product--category {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    /* Tự động xuống dòng nếu nhiều thẻ quá dài */
+    gap: 8px !important;
+    /* Đúng yêu cầu: cách nhau 8px */
+    margin: 12px 0 8px 0 !important;
+    padding: 0 !important;
+    /* Xóa padding ở thẻ cha */
+    background: transparent !important;
+    border: none !important;
+    width: 100% !important;
+}
+
+/* Định dạng cho từng viên thuốc (Pill) danh mục được JS sinh ra */
+.fello_product_card .fello-category-tag {
+    display: inline-block !important;
+    background-color: #FAF9F8 !important;
+    border: 1px solid #D1D5DB !important;
+    border-radius: 99px !important;
+    padding: 4px 14px !important;
+    color: #6B7280 !important;
+    font-size: 13px !important;
+    white-space: nowrap !important;
+    /* Chống rớt dòng chữ bên trong 1 thẻ */
+}
+
+/* Ép lề cho tiêu đề và giá tiền */
+.fello_product_card .grid-product--info {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+}
+
+.fello_product_card .grid-product--title-wrapper,
+.fello_product_card .grid-product--price {
+    padding-left: 2px !important;
+}
+
+/* Đảm bảo Lenis hoạt động đúng với layout của Webcake */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+/* ==========================================================================
+   BIG BLOG CARD — CUSTOM
+   ========================================================================== */
+
+/* --- 1. ZOOM ẢNH KHI HOVER (giống fello_blog_card nhưng bo góc = 0) --- */
+.big_blog_card .post-list__container {
+    overflow: hidden !important;
+    border-radius: 0 !important;
+}
+
+.big_blog_card .post-list__image {
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.big_blog_card post-list-item:hover .post-list__image {
+    transform: scale(1.05) !important;
+}
+
+/* --- 2. DANH MỤC BÀI VIẾT — TAG VIỀN TRÒN (y hệt fello_blog_card) --- */
+.big_blog_card .post-list__category {
+    display: inline-block !important;
+    width: max-content !important;
+    border: 1px solid #E0E0E0 !important;
+    border-radius: 20px !important;
+    padding: 4px 12px !important;
+    margin-bottom: 12px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #555555 !important;
+    background-color: transparent !important;
+    transition: all 0.25s ease !important;
+}
+
+.big_blog_card .post-list__category:hover {
+    border-color: #000000 !important;
+    color: #000000 !important;
+    background-color: #F9F9F9 !important;
+}
+/* --- 3. GIẢM LINE-HEIGHT TIÊU ĐỀ BIG BLOG CARD --- */
+.big_blog_card .post-list__title {
+    line-height: 1.25 !important;
+}
+
+/* --- 4. CẬP NHẬT TAG DANH MỤC: VIỀN ĐẬM HƠN + NỀN --- */
+.big_blog_card .post-list__category {
+    border: 1px solid #C8C8C8 !important;   /* Đậm hơn ~10% so với #E0E0E0 */
+    background-color: #faf9f8 !important;
+}
+
+/* ==========================================================================
+   CUSTOM BO GÓC ẢNH SẢN PHẨM (.bo-goc-anh-sp)
+   ========================================================================== */
+   .bo-goc-anh-sp img {
+    border-radius: 24px !important;
+}
+
+/* ==========================================================================
+   BLUR NỀN KHI MỞ POPUP (GIỎ HÀNG, XEM NHANH, SEARCH, WISHLIST...)
+   ========================================================================== */
+
+/* Popup Giỏ hàng (side cart) */
+.cart-overlay-box {
+    background: rgba(0, 0, 0, 0.4) !important;
+    opacity: 1 !important;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+/* Tất cả popup còn lại: Xem nhanh, Search, Wishlist... */
+.overlay-box {
+    background: rgba(0, 0, 0, 0.4) !important;
+    opacity: 1 !important;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
