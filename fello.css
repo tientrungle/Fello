@@ -116,7 +116,7 @@ html.lenis body {
 .big_blog_card .post-list__category {
     display: inline-block !important;
     width: max-content !important;
-    border: 1px solid #C8C8C8 !important;
+    border: 1px solid #EDEDED !important;
     border-radius: 20px !important;
     padding: 4px 12px !important;
     margin-bottom: 12px !important;
@@ -256,21 +256,39 @@ html.lenis body {
 }
 
 
-/* ==========================================================================
+/* ====================================
    LOGO ĐỐI TÁC (.partner_logo)
-   ========================================================================== */
-
-/* --- 1. TRẠNG THÁI GỐC — GRAYSCALE MỜ --- */
-.partner_logo .x-image img {
-    filter: grayscale(100%) !important;
-    opacity: 0.6 !important;
-    transition: filter 0.3s ease, opacity 0.3s ease !important;
+   ==================================== */
+.partner_logo .x-image {
+    border: none !important;
 }
 
-/* --- 2. HOVER — TRẢ LẠI MÀU GỐC RÕ NÉT --- */
-.partner_logo .x-image:hover img {
-    filter: grayscale(0%) !important;
+.partner_logo .x-image img {
+    filter: none !important;
     opacity: 1 !important;
+    transition: none !important;
+}
+
+/* Chỉ áp dụng hiệu ứng hover cho Màn 4 và Màn 5 */
+@media (min-width: 1320px) {
+    .partner_logo .x-image img {
+        filter: grayscale(100%) !important;
+        opacity: 0.6 !important;
+        transition: filter 0.3s ease, opacity 0.3s ease !important;
+    }
+
+    .partner_logo .x-image:hover img {
+        filter: grayscale(0%) !important;
+        opacity: 1 !important;
+    }
+}
+
+/* Thêm stroke cho thẻ trắng chứa logo ở Màn 1, 2, 3 */
+@media (max-width: 1319px) {
+    .partner_logo>.x-element {
+        border: 1px solid #e3e3e3 !important;
+        box-sizing: border-box !important;
+    }
 }
 
 
@@ -294,11 +312,10 @@ html.lenis body {
 .fello_product_card .fello-category-tag {
     display: inline-block !important;
     background-color: #FAF9F8 !important;
-    border: 1px solid #D1D5DB !important;
+    border: 1px solid #EDEDED !important;
     border-radius: 99px !important;
-    padding: 4px 14px !important;
+    padding: 4px 12px !important;
     color: #6B7280 !important;
-    font-size: 13px !important;
     white-space: nowrap !important;
 }
 
@@ -346,13 +363,6 @@ html.lenis body {
 
 /* ==========================================================================
    DANH MỤC SẢN PHẨM (.fello-categories-product)
-   Các vấn đề đã xác định và sửa:
-   ① Ảnh vỡ góc khi zoom: img dùng border-radius:24px (từ theme) nhưng
-      .x-gc-thumbnail thiếu border-radius → đồng bộ lại
-   ② Nút nhảy khi hover: theme đã đặt transform:translateY(-50%) trên nút
-      → bỏ transform:scale(), thay bằng box-shadow
-   ③ Hình vuông stroke: .button-arrow:after có border:1px solid rgba(0,0,0,0.2)
-      → ẩn pseudo-element này đi
    ========================================================================== */
 
 /* --- 1. NÚT ĐIỀU HƯỚNG — BO TRÒN + GLASS 80% --- */
