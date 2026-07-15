@@ -348,27 +348,40 @@ html.lenis body {
    3e. Danh Mục Sản Phẩm — Slider (.fello-categories-product)
    -------------------------------------------------------------------------- */
 
-/* --- Nút điều hướng — bo tròn + glass 80% --- */
+/* --- Nút điều hướng — bo tròn glass (đồng bộ với .fello_blog_card) --- */
+.fello-categories-product {
+    position: relative !important;
+}
+
 .fello-categories-product .slider-product--control {
-    width: 40px !important;
-    height: 40px !important;
     border-radius: 50% !important;
-    background: rgba(255, 255, 255, 0.8) !important;
+    background: rgba(255, 255, 255, 0.6) !important;
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
     border: none !important;
     outline: none !important;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     cursor: pointer !important;
     transition: background 0.25s ease, box-shadow 0.25s ease !important;
+    position: absolute !important;
+    z-index: 10 !important;
+    padding: 0 !important;
 }
 
 .fello-categories-product .slider-product--control:hover {
-    background: rgba(255, 255, 255, 0.95) !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22) !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18) !important;
+}
+
+.fello-categories-product .slider-product--prev {
+    left: 12px !important;
+}
+
+.fello-categories-product .slider-product--next {
+    right: 12px !important;
 }
 
 /* --- Ẩn hình vuông stroke từ .button-arrow::after --- */
@@ -377,10 +390,8 @@ html.lenis body {
     display: none !important;
 }
 
-/* --- Icon mũi tên — 16×16px --- */
+/* --- Icon mũi tên --- */
 .fello-categories-product .slider-product--control svg {
-    width: 16px !important;
-    height: 16px !important;
     flex-shrink: 0 !important;
 }
 
@@ -487,9 +498,142 @@ html.lenis body {
 }
 
 
+/* --------------------------------------------------------------------------
+   3h. Instagram Cards (.instagram-card)
+   Chỉ áp dụng hiệu ứng hover cho Màn 4 & 5 (Desktop >= 1320px)
+   Màn 3, 2, 1 để nguyên 100% như thiết kế trong Webcake
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 1320px) {
+    .instagram-card {
+        overflow: hidden !important;
+        cursor: pointer !important;
+    }
+
+    .instagram-card .x-image {
+        overflow: hidden !important;
+    }
+
+    /* Ảnh: zoom nhẹ và chuyển màu tối hơn chút xíu khi hover */
+    .instagram-card .x-image img {
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease !important;
+    }
+
+    .instagram-card:hover .x-image img {
+        transform: scale(1.05) !important;
+        filter: brightness(0.9) !important;
+    }
+
+    /* Logo Instagram (khối SVG bên trong card): ẩn mặc định, hiện ra và phóng nhẹ lên 1 khi hover */
+    .instagram-card>.x-element:not(.x-image):not(.container-style) {
+        width: 28px !important;
+        height: 28px !important;
+        min-width: 0 !important;
+        opacity: 0 !important;
+        transform: scale(0.85) !important;
+        pointer-events: none !important;
+        transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    }
+
+    .instagram-card>.x-element:not(.x-image):not(.container-style) .x-rect,
+    .instagram-card>.x-element:not(.x-image):not(.container-style) .x-rect::before {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .instagram-card:hover>.x-element:not(.x-image):not(.container-style) {
+        opacity: 1 !important;
+        transform: scale(1) !important;
+    }
+}
+
+@media (max-width: 1319px) {
+
+    .instagram-card,
+    .instagram-card .x-image,
+    .instagram-card .x-image img,
+    .instagram-card>.x-element:not(.x-image):not(.container-style) {
+        cursor: inherit !important;
+        transition: none !important;
+        transform: none !important;
+    }
+
+    .instagram-card>.x-element:not(.x-image):not(.container-style) {
+        width: 28px !important;
+        height: 28px !important;
+        min-width: 0 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+
+    .instagram-card>.x-element:not(.x-image):not(.container-style) .x-rect,
+    .instagram-card>.x-element:not(.x-image):not(.container-style) .x-rect::before {
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+
 /* ==========================================================================
    4. BLOG PAGE
    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   4-tab. Tab Danh Mục Bài Viết (.tabs-blog)
+   Cuộn ngang 1 hàng trên mobile — đồng bộ pattern với .tabs-product-home
+   -------------------------------------------------------------------------- */
+
+/* Màn 1: thanh tab cuộn ngang, chặn dọc */
+@media (max-width: 640px) {
+    .tabs-blog .cake-tabs-nav-list-wrapper {
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scrollbar-width: none !important;
+        padding-bottom: 4px !important;
+    }
+
+    .tabs-blog .cake-tabs-nav-list-wrapper::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .tabs-blog .cake-tabs-nav-list {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        width: max-content !important;
+    }
+
+    .tabs-blog .tabs-nav-item {
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+   4-tags. Tag Lịch Sử Đơn Hàng (.tags-history)
+   Cuộn ngang 1 hàng trên mobile — tránh xuống hàng trên màn hình nhỏ
+   -------------------------------------------------------------------------- */
+
+/* Màn 1 & 2: tags cuộn ngang, chặn dọc */
+@media (max-width: 992px) {
+    .tags-history .x-tags-wrapper {
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scrollbar-width: none !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .tags-history .x-tags-wrapper::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .tags-history .x-tag-item {
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+    }
+}
+
 
 /* --------------------------------------------------------------------------
    4a. Card Bài Viết Lớn (.big_blog_card)
