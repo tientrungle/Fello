@@ -1,42 +1,45 @@
 /* ==========================================================================
    FELLO SKINCARE — CUSTOM CSS
-   Cấu trúc:
-     1.  GLOBAL / UTILITIES
-     2.  HEADER & NAVIGATION
-     3.  HOME PAGE
-         3b. Tab Sản Phẩm (.tabs-product-home)
-         3c. Card Sản Phẩm (.fello_product_card)
-         3d. Card Bài Viết — Slider Nhỏ (.fello_blog_card)
-         3e. Danh Mục Sản Phẩm — Slider (.fello-categories-product)
-         3f. Khám Phá Danh Mục (.discover_catalog)
-         3g. Logo Đối Tác (.partner_logo)
-     4.  BLOG PAGE
-         4a. Card Bài Viết Lớn (.big_blog_card)
-         4b. Phân Trang Blog
-     5.  POPUP & OVERLAY
+   
+   CẤU TRÚC MỤC LỤC (TABLE OF CONTENTS):
+     1. HEADER & NAVIGATION
+        1a. Menu điều hướng (.custom-menu-hover)
+        1b. Tắt bóng hiệu ứng Submenu (.x-submenu)
+        1c. Nút Mạng xã hội (.fello-social-btn)
+        1d. Nút Menu Header (.fello-menu-btn)
+        
+     2. TRANG CHỦ (HOME PAGE)
+        2a. Tab Sản Phẩm Trang Chủ (.tabs-product-home)
+        2b. Card Sản Phẩm (.fello_product_card)
+        2c. Card Bài Viết — Slider Nhỏ (.fello_blog_card)
+        2d. Danh Mục Sản Phẩm — Slider (.fello-categories-product)
+        2e. Khám Phá Danh Mục (.discover_catalog)
+        2f. Logo Đối Tác (.partner_logo)
+        2g. Instagram Cards (.instagram-card)
+        
+     3. TRANG BÀI VIẾT & TÀI KHOẢN (BLOG & ACCOUNT PAGES)
+        3a. Tab Danh Mục Bài Viết (.tabs-blog)
+        3b. Card Bài Viết Lớn (.big_blog_card)
+        3c. Phân Trang Blog (.fello_blog_card)
+        3d. Tag Lịch Sử Đơn Hàng (.tags-history)
+        
+     4. POPUP & OVERLAY
+        4a. Popup Giỏ Hàng Side Cart (.cart-overlay-box)
+        4b. Popup Xem Nhanh / Tìm Kiếm / Wishlist (.overlay-box)
+        
+     5. KHUYẾN MÃI & THẺ GIẢM GIÁ (PROMOTIONS)
+        5a. Căn Trái Nội Dung Thẻ Giảm Giá (.the-giam-gia)
    ========================================================================== */
 
 
 /* ==========================================================================
-   1. GLOBAL / UTILITIES
+   1. HEADER & NAVIGATION
    ========================================================================== */
 
-/* --- Lenis Smooth Scroll — tương thích layout Webcake --- */
-html.lenis,
-html.lenis body {
-    height: auto;
-}
-
-.lenis.lenis-scrolling iframe {
-    pointer-events: none;
-}
-
-
-/* ==========================================================================
-   2. HEADER & NAVIGATION
-   ========================================================================== */
-
-/* --- Menu điều hướng — hiệu ứng dịch phải khi hover (.custom-menu-hover) --- */
+/* --------------------------------------------------------------------------
+   1a. Menu Điều Hướng (.custom-menu-hover)
+   Hiệu ứng dịch chuyển nhẹ sang phải (+4px) khi rê chuột vào liên kết menu
+   -------------------------------------------------------------------------- */
 .custom-menu-hover .tag-link {
     transition: transform 0.3s cubic-bezier(.4, 0, .2, 1);
 }
@@ -45,14 +48,18 @@ html.lenis body {
     transform: translateX(4px);
 }
 
-/* ======
-   TẮT BÓNG POPUP SUBMENU
-   ====== */
+/* --------------------------------------------------------------------------
+   1b. Tắt Bóng Hiệu Ứng Submenu (.x-submenu)
+   Loại bỏ box-shadow đổ bóng mặc định của menu xổ xuống trong Webcake
+   -------------------------------------------------------------------------- */
 .x-submenu {
     box-shadow: none !important;
 }
 
-/* --- Nút mạng xã hội (.fello-social-btn) --- */
+/* --------------------------------------------------------------------------
+   1c. Nút Mạng Xã Hội (.fello-social-btn)
+   Nút hình chữ nhật/tròn biểu tượng mạng xã hội với hiệu ứng nảy & đổi màu
+   -------------------------------------------------------------------------- */
 .fello-social-btn {
     cursor: pointer !important;
     --active-color: #000000;
@@ -73,7 +80,10 @@ html.lenis body {
     --active-color: #ffffff;
 }
 
-/* --- Nút menu (.fello-menu-btn) --- */
+/* --------------------------------------------------------------------------
+   1d. Nút Menu Header (.fello-menu-btn)
+   Nút bấm mở menu trên Header với hiệu ứng nhấc nhẹ và đổi nền xám nhạt
+   -------------------------------------------------------------------------- */
 .fello-menu-btn {
     cursor: pointer !important;
     transition: transform .25s cubic-bezier(.4, 0, .2, 1),
@@ -89,25 +99,26 @@ html.lenis body {
 
 
 /* ==========================================================================
-   3. HOME PAGE
+   2. TRANG CHỦ (HOME PAGE)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   3b. Tab Sản Phẩm (.tabs-product-home)
+   2a. Tab Sản Phẩm Trang Chủ (.tabs-product-home)
+   Tùy chỉnh font-weight và cuộn ngang mượt cho danh sách tab trên mobile
    -------------------------------------------------------------------------- */
 
-/* Semi Bold cho text tab (tất cả màn hình) */
+/* Font chữ Medium (500) cho tiêu đề các tab (tất cả kích thước màn hình) */
 .tabs-product-home .tabs-nav-item span {
     font-weight: 500 !important;
 }
 
-/* Màn 1: thanh tab cuộn ngang, chặn dọc */
+/* Mobile (Màn 1: <= 640px): Cho phép cuộn ngang danh sách tab, ẩn thanh cuộn */
 @media (max-width: 640px) {
     .tabs-product-home .cake-tabs-nav-list-wrapper {
         overflow-x: auto !important;
         overflow-y: hidden !important;
         scrollbar-width: none !important;
-        /* padding-bottom: 4px để chỉ báo active 2px (.highlight-icon)
+        /* padding-bottom: 4px để vạch chỉ báo active 2px (.highlight-icon)
            nằm gọn bên trong vùng clip, không bị cắt mất */
         padding-bottom: 4px !important;
     }
@@ -130,10 +141,11 @@ html.lenis body {
 
 
 /* --------------------------------------------------------------------------
-   3c. Card Sản Phẩm (.fello_product_card)
+   2b. Card Sản Phẩm (.fello_product_card)
+   Định dạng các thẻ danh mục dạng Pill Tag và căn chỉnh khoảng cách thông tin
    -------------------------------------------------------------------------- */
 
-/* --- Khung chứa thẻ danh mục — flex 1 dòng + cuộn ngang --- */
+/* Khung chứa các thẻ danh mục — xếp flex 1 hàng và cho phép cuộn ngang */
 .fello_product_card .grid-product--category {
     display: flex !important;
     flex-wrap: nowrap !important;
@@ -151,7 +163,7 @@ html.lenis body {
     display: none !important;
 }
 
-/* --- Thẻ danh mục dạng pill (được tạo bởi Custom JS) --- */
+/* Thẻ danh mục dạng Pill Tag (được tạo bởi Custom JS) */
 .fello_product_card .fello-category-tag {
     display: inline-block !important;
     background-color: #FAF9F8 !important;
@@ -167,21 +179,21 @@ html.lenis body {
     border-color: #7D7D7D !important;
 }
 
-/* Màn 2 */
+/* Tablet (Màn 2: 641px - 992px): Điều chỉnh padding pill tag */
 @media (min-width: 641px) and (max-width: 992px) {
     .fello_product_card .fello-category-tag {
         padding: 3px 10px !important;
     }
 }
 
-/* Màn 1 */
+/* Mobile (Màn 1: <= 640px): Điều chỉnh padding pill tag */
 @media (max-width: 640px) {
     .fello_product_card .fello-category-tag {
         padding: 3px 8px !important;
     }
 }
 
-/* --- Căn chỉnh tiêu đề và giá --- */
+/* Căn chỉnh dọc phần thông tin tiêu đề và giá sản phẩm */
 .fello_product_card .grid-product--info {
     display: flex !important;
     flex-direction: column !important;
@@ -195,10 +207,11 @@ html.lenis body {
 
 
 /* --------------------------------------------------------------------------
-   3d. Card Bài Viết — Slider Nhỏ (.fello_blog_card)
+   2c. Card Bài Viết — Slider Nhỏ (.fello_blog_card)
+   Hiệu ứng ảnh, danh mục pill tag, nút đọc và nút chuyển slide kính mờ
    -------------------------------------------------------------------------- */
 
-/* --- Ảnh — zoom khi hover --- */
+/* Bo góc khung ảnh & hiệu ứng zoom ảnh khi hover */
 .fello_blog_card .post-list__container {
     overflow: hidden !important;
     border-radius: 16px !important;
@@ -212,7 +225,7 @@ html.lenis body {
     transform: scale(1.05) !important;
 }
 
-/* --- Danh mục — container flex 1 dòng + cuộn ngang --- */
+/* Container danh mục bài viết — flex 1 hàng và cuộn ngang */
 .fello_blog_card .post-list__category {
     display: flex !important;
     flex-wrap: nowrap !important;
@@ -233,7 +246,7 @@ html.lenis body {
     display: none !important;
 }
 
-/* --- Thẻ danh mục dạng pill (được tạo bởi Custom JS) --- */
+/* Thẻ danh mục dạng Pill Tag (tạo bởi Custom JS) */
 .fello_blog_card .fello-category-tag {
     display: inline-block !important;
     background-color: #FAF9F8 !important;
@@ -249,21 +262,21 @@ html.lenis body {
     border-color: #7D7D7D !important;
 }
 
-/* Màn 2 */
+/* Tablet (Màn 2: 641px - 992px) */
 @media (min-width: 641px) and (max-width: 992px) {
     .fello_blog_card .fello-category-tag {
         padding: 3px 10px !important;
     }
 }
 
-/* Màn 1 */
+/* Mobile (Màn 1: <= 640px) */
 @media (max-width: 640px) {
     .fello_blog_card .fello-category-tag {
         padding: 3px 8px !important;
     }
 }
 
-/* --- Tiêu đề — đổi màu khi hover --- */
+/* Đổi màu tiêu đề bài viết khi hover */
 .fello_blog_card .post-list__title {
     transition: color 0.25s ease !important;
 }
@@ -272,7 +285,7 @@ html.lenis body {
     color: #000000 !important;
 }
 
-/* --- Nút đọc bài — dịch phải + đổi màu xanh rêu khi hover --- */
+/* Nút đọc bài viết — hiệu ứng trượt phải & sang màu xanh rêu khi hover */
 .fello_blog_card .post-list__read-button {
     display: inline-flex !important;
     align-items: center !important;
@@ -287,26 +300,26 @@ html.lenis body {
     font-weight: 600 !important;
 }
 
-/* --- Khoảng cách giữa các hàng card --- */
+/* Khoảng cách lề dưới giữa các card bài viết */
 .fello_blog_card post-list-item {
     margin-bottom: 48px !important;
 }
 
-/* Màn 2 */
+/* Tablet (Màn 2: 641px - 992px) */
 @media (min-width: 641px) and (max-width: 992px) {
     .fello_blog_card post-list-item {
         margin-bottom: 40px !important;
     }
 }
 
-/* Màn 1 */
+/* Mobile (Màn 1: <= 640px) */
 @media (max-width: 640px) {
     .fello_blog_card post-list-item {
         margin-bottom: 40px !important;
     }
 }
 
-/* --- Nút điều hướng slider — bo tròn glass --- */
+/* Nút điều hướng Slider bài viết — dạng hình tròn Glassmorphism */
 .fello_blog_card {
     position: relative !important;
 }
@@ -352,14 +365,15 @@ html.lenis body {
 
 
 /* --------------------------------------------------------------------------
-   3e. Danh Mục Sản Phẩm — Slider (.fello-categories-product)
+   2d. Danh Mục Sản Phẩm — Slider (.fello-categories-product)
+   Nút điều hướng kính mờ (Glassmorphism) & bo góc ảnh danh mục
    -------------------------------------------------------------------------- */
 
-/* --- Nút điều hướng — bo tròn glass (đồng bộ với .fello_blog_card) --- */
 .fello-categories-product {
     position: relative !important;
 }
 
+/* Nút điều hướng Glassmorphism (đồng bộ phong cách với Slider bài viết) */
 .fello-categories-product .slider-product--control {
     border-radius: 50% !important;
     background: rgba(255, 255, 255, 0.6) !important;
@@ -391,18 +405,17 @@ html.lenis body {
     right: 12px !important;
 }
 
-/* --- Ẩn hình vuông stroke từ .button-arrow::after --- */
+/* Loại bỏ khung đường viền vuông mặc định từ Webcake (.button-arrow::after) */
 .fello-categories-product .button-arrow:after {
     border: none !important;
     display: none !important;
 }
 
-/* --- Icon mũi tên --- */
 .fello-categories-product .slider-product--control svg {
     flex-shrink: 0 !important;
 }
 
-/* --- Ảnh card — bo góc đồng bộ + zoom khi hover --- */
+/* Bo góc 24px cho ảnh danh mục & hiệu ứng phóng to khi hover */
 .fello-categories-product .x-gc-thumbnail {
     border-radius: 24px !important;
     overflow: hidden !important;
@@ -423,10 +436,11 @@ html.lenis body {
 
 
 /* --------------------------------------------------------------------------
-   3f. Khám Phá Danh Mục (.discover_catalog)
+   2e. Khám Phá Danh Mục (.discover_catalog)
+   Tạo nút tròn kèm biểu tượng mũi tên điều hướng ở phía bên phải dòng danh mục
    -------------------------------------------------------------------------- */
 
-/* --- Layout dòng danh mục --- */
+/* Đặt vị trí dòng danh mục và tạo khoảng trống bên phải cho nút mũi tên */
 .discover_catalog .tag-link {
     position: relative !important;
     display: flex !important;
@@ -437,7 +451,7 @@ html.lenis body {
     box-sizing: border-box !important;
 }
 
-/* --- Nút tròn + mũi tên (tạo tự động bằng ::after) --- */
+/* Nút tròn + biểu tượng mũi tên (tạo tự động bằng pseudo-element ::after) */
 .discover_catalog .tag-link::after {
     content: "" !important;
     position: absolute !important;
@@ -459,7 +473,7 @@ html.lenis body {
         transform 0.25s ease !important;
 }
 
-/* --- Hover — nút đen + mũi tên trắng + nhích nhẹ sang phải --- */
+/* Hiệu ứng Hover — Đổi sang nền đen, icon trắng và nhích nhẹ 2px sang phải */
 .discover_catalog .menu-item:hover .tag-link::after {
     background-color: #1A1A1A !important;
     border-color: #1A1A1A !important;
@@ -469,14 +483,15 @@ html.lenis body {
 
 
 /* --------------------------------------------------------------------------
-   3g. Logo Đối Tác (.partner_logo)
+   2f. Logo Đối Tác (.partner_logo)
+   Hiệu ứng Grayscale trên Desktop và viền đường néo trên Mobile/Tablet
    -------------------------------------------------------------------------- */
 
 .partner_logo .x-image {
     border: none !important;
 }
 
-/* Màn 4 & 5: grayscale mặc định, hover trả về màu */
+/* Desktop (Màn 4 & 5: >= 1320px): Logo trắng đen (grayscale 100%), hover trả màu gốc */
 @media (min-width: 1320px) {
     .partner_logo .x-image img {
         filter: grayscale(100%) !important;
@@ -490,7 +505,7 @@ html.lenis body {
     }
 }
 
-/* Màn 1, 2, 3: thêm stroke viền thẻ chứa logo */
+/* Mobile & Tablet (Màn 1, 2, 3: < 1319px): Hiển thị màu gốc + thêm khung viền nhạt */
 @media (max-width: 1319px) {
     .partner_logo .x-image img {
         filter: none !important;
@@ -506,11 +521,11 @@ html.lenis body {
 
 
 /* --------------------------------------------------------------------------
-   3h. Instagram Cards (.instagram-card)
-   Chỉ áp dụng hiệu ứng hover cho Màn 4 & 5 (Desktop >= 1320px)
-   Màn 3, 2, 1 để nguyên 100% như thiết kế trong Webcake
+   2g. Instagram Cards (.instagram-card)
+   Hiệu ứng zoom ảnh & hiện icon Instagram khi hover (áp dụng Desktop >= 1320px)
    -------------------------------------------------------------------------- */
 
+/* Desktop (Màn 4 & 5: >= 1320px): Zoom ảnh & xuất hiện logo Instagram khi hover */
 @media (min-width: 1320px) {
     .instagram-card {
         overflow: hidden !important;
@@ -521,7 +536,7 @@ html.lenis body {
         overflow: hidden !important;
     }
 
-    /* Ảnh: zoom nhẹ và chuyển màu tối hơn chút xíu khi hover */
+    /* Ảnh: zoom 5% và giảm độ sáng nhẹ khi hover */
     .instagram-card .x-image img {
         transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease !important;
     }
@@ -531,7 +546,7 @@ html.lenis body {
         filter: brightness(0.9) !important;
     }
 
-    /* Logo Instagram (khối SVG bên trong card): ẩn mặc định, hiện ra và phóng nhẹ lên 1 khi hover */
+    /* Icon Instagram: Ẩn mặc định, hiện rõ & phóng to nhẹ khi hover */
     .instagram-card>.x-element:not(.x-image):not(.container-style) {
         width: 28px !important;
         height: 28px !important;
@@ -554,6 +569,7 @@ html.lenis body {
     }
 }
 
+/* Mobile & Tablet (< 1319px): Giữ nguyên thiết kế tĩnh mặc định */
 @media (max-width: 1319px) {
 
     .instagram-card,
@@ -583,15 +599,15 @@ html.lenis body {
 
 
 /* ==========================================================================
-   4. BLOG PAGE
+   3. TRANG BÀI VIẾT & TÀI KHOẢN (BLOG & ACCOUNT PAGES)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   4-tab. Tab Danh Mục Bài Viết (.tabs-blog)
-   Cuộn ngang 1 hàng trên mobile — đồng bộ pattern với .tabs-product-home
+   3a. Tab Danh Mục Bài Viết (.tabs-blog)
+   Cho phép cuộn ngang 1 hàng trên mobile — đồng bộ pattern với .tabs-product-home
    -------------------------------------------------------------------------- */
 
-/* Màn 1: thanh tab cuộn ngang, chặn dọc */
+/* Mobile (Màn 1: <= 640px) */
 @media (max-width: 640px) {
     .tabs-blog .cake-tabs-nav-list-wrapper {
         overflow-x: auto !important;
@@ -618,35 +634,11 @@ html.lenis body {
 
 
 /* --------------------------------------------------------------------------
-   4-tags. Tag Lịch Sử Đơn Hàng (.tags-history)
-   Cuộn ngang 1 hàng trên mobile — tránh xuống hàng trên màn hình nhỏ
+   3b. Card Bài Viết Lớn (.big_blog_card)
+   Hiệu ứng ảnh vuông góc, danh mục Pill tag và căn chỉnh line-height tiêu đề
    -------------------------------------------------------------------------- */
 
-/* Màn 1 & 2: tags cuộn ngang, chặn dọc */
-@media (max-width: 992px) {
-    .tags-history .x-tags-wrapper {
-        overflow-x: auto !important;
-        overflow-y: hidden !important;
-        scrollbar-width: none !important;
-        flex-wrap: nowrap !important;
-    }
-
-    .tags-history .x-tags-wrapper::-webkit-scrollbar {
-        display: none !important;
-    }
-
-    .tags-history .x-tag-item {
-        flex-shrink: 0 !important;
-        white-space: nowrap !important;
-    }
-}
-
-
-/* --------------------------------------------------------------------------
-   4a. Card Bài Viết Lớn (.big_blog_card)
-   -------------------------------------------------------------------------- */
-
-/* --- Ảnh — zoom khi hover (bo góc = 0) --- */
+/* Bo góc ảnh = 0 & hiệu ứng zoom khi hover */
 .big_blog_card .post-list__container {
     overflow: hidden !important;
     border-radius: 0 !important;
@@ -660,7 +652,7 @@ html.lenis body {
     transform: scale(1.05) !important;
 }
 
-/* --- Danh mục — container flex 1 dòng + cuộn ngang (đồng bộ với .fello_blog_card) --- */
+/* Container danh mục bài viết — flex 1 hàng và cuộn ngang */
 .big_blog_card .post-list__category {
     display: flex !important;
     flex-wrap: nowrap !important;
@@ -680,7 +672,7 @@ html.lenis body {
     display: none !important;
 }
 
-/* --- Thẻ danh mục dạng pill (đồng bộ hoàn toàn với .fello_product_card & .fello_blog_card) --- */
+/* Thẻ danh mục dạng Pill Tag (đồng bộ với Card bài viết nhỏ & Card sản phẩm) */
 .big_blog_card .fello-category-tag {
     display: inline-block !important;
     background-color: #FAF9F8 !important;
@@ -696,31 +688,32 @@ html.lenis body {
     border-color: #7D7D7D !important;
 }
 
-/* Màn 2 */
+/* Tablet (Màn 2: 641px - 992px) */
 @media (min-width: 641px) and (max-width: 992px) {
     .big_blog_card .fello-category-tag {
         padding: 3px 10px !important;
     }
 }
 
-/* Màn 1 */
+/* Mobile (Màn 1: <= 640px) */
 @media (max-width: 640px) {
     .big_blog_card .fello-category-tag {
         padding: 3px 8px !important;
     }
 }
 
-/* --- Tiêu đề — giảm line-height --- */
+/* Giảm khoảng cách dòng (line-height) của tiêu đề bài viết lớn */
 .big_blog_card .post-list__title {
     line-height: 1.25 !important;
 }
 
 
 /* --------------------------------------------------------------------------
-   4b. Phân Trang Blog (.fello_blog_card)
+   3c. Phân Trang Blog (.fello_blog_card)
+   Giao diện các nút chuyển trang Prev/Next và các nút chọn số trang
    -------------------------------------------------------------------------- */
 
-/* --- Nút Previous / Next --- */
+/* Nút chuyển trang Trước / Sau (Previous / Next) */
 .fello_blog_card .post-list__btn {
     border-radius: 8px !important;
     background-color: #FFF2F2 !important;
@@ -756,7 +749,7 @@ html.lenis body {
     fill: none !important;
 }
 
-/* --- Số trang --- */
+/* Nút các số trang (1, 2, 3...) */
 .fello_blog_card .post-list__num {
     border-radius: 8px !important;
     background-color: #FFF2F2 !important;
@@ -787,11 +780,38 @@ html.lenis body {
 }
 
 
-/* ======================================================
-   5. POPUP & OVERLAY
-   ====================================================== */
+/* --------------------------------------------------------------------------
+   3d. Tag Lịch Sử Đơn Hàng (.tags-history)
+   Cuộn ngang 1 hàng trên màn hình nhỏ (< 992px) — tránh bị xuống dòng
+   -------------------------------------------------------------------------- */
 
-/* --- Popup giỏ hàng (side cart) --- */
+@media (max-width: 992px) {
+    .tags-history .x-tags-wrapper {
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scrollbar-width: none !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .tags-history .x-tags-wrapper::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .tags-history .x-tag-item {
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+    }
+}
+
+
+/* ==========================================================================
+   4. POPUP & OVERLAY
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   4a. Popup Giỏ Hàng Side Cart (.cart-overlay-box)
+   Lớp phủ mờ nền bán trong suốt kèm hiệu ứng Glassmorphism Backdrop Blur (2px)
+   -------------------------------------------------------------------------- */
 .cart-overlay-box {
     background: rgba(0, 0, 0, 0.4) !important;
     opacity: 1 !important;
@@ -799,7 +819,10 @@ html.lenis body {
     -webkit-backdrop-filter: blur(2px);
 }
 
-/* --- Popup xem nhanh / tìm kiếm / wishlist --- */
+/* --------------------------------------------------------------------------
+   4b. Popup Xem Nhanh / Tìm Kiếm / Wishlist (.overlay-box)
+   Lớp phủ mờ nền bán trong suốt cho tất cả popup còn lại kèm Blur (2px)
+   -------------------------------------------------------------------------- */
 .overlay-box {
     background: rgba(0, 0, 0, 0.4) !important;
     opacity: 1 !important;
@@ -807,9 +830,15 @@ html.lenis body {
     -webkit-backdrop-filter: blur(2px);
 }
 
-/* ============================================
-Ép các khối thẻ giảm giá căn sang bên trái
-=============================================== */
+
+/* ==========================================================================
+   5. KHUYẾN MÃI & THẺ GIẢM GIÁ (PROMOTIONS)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   5a. Căn Trái Nội Dung Thẻ Giảm Giá (.the-giam-gia)
+   Ép các khối thông tin ưu đãi/mã giảm giá căn đều sang lề trái
+   -------------------------------------------------------------------------- */
 .the-giam-gia .x-promotion-content {
     align-items: flex-start !important;
 }
