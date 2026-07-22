@@ -45,6 +45,13 @@ html.lenis body {
     transform: translateX(4px);
 }
 
+/* ======
+   TẮT BÓNG POPUP SUBMENU
+   ====== */
+.x-submenu {
+    box-shadow: none !important;
+}
+
 /* --- Nút mạng xã hội (.fello-social-btn) --- */
 .fello-social-btn {
     cursor: pointer !important;
@@ -780,9 +787,9 @@ html.lenis body {
 }
 
 
-/* ==========================================================================
+/* ======================================================
    5. POPUP & OVERLAY
-   ========================================================================== */
+   ====================================================== */
 
 /* --- Popup giỏ hàng (side cart) --- */
 .cart-overlay-box {
@@ -798,4 +805,11 @@ html.lenis body {
     opacity: 1 !important;
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
+}
+
+/* ============================================
+Ép các khối thẻ giảm giá căn sang bên trái
+=============================================== */
+.the-giam-gia .x-promotion-content {
+    align-items: flex-start !important;
 }
